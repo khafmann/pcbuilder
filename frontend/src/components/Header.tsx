@@ -1,7 +1,9 @@
 export default function Header(){
     return(
         <>
-            <div></div>
+            <div>
+                <h2>Header</h2>
+            </div>
         </>
     )
 }
