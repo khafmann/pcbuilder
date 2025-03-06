@@ -5,11 +5,15 @@ import {
     FormControl,
     Box,
     Typography,
-    Checkbox, FormControlLabel, Autocomplete, TextField, Grid
+    Checkbox,
+    FormControlLabel,
+    Autocomplete,
+    TextField,
+    Grid
 } from "@mui/material";
 import { monitorResolution } from '../data/monitorResolution.ts'
 
-const FilterComponent: React.FC = () => {
+export default function FilterComponent(){
     const [budget, setBudget] = useState<number[]>([100000, 1000000]);
 
     const handleSliderChange = (_: Event, newValue: number | number[]) => {
@@ -39,96 +43,68 @@ const FilterComponent: React.FC = () => {
         setBudget(newBudget);
     };
 
-
     return (
-        <Box sx={{ p: 3, bgcolor: "#3f51b5", borderRadius: 2, width: 400, color:"white"}}>
-            <Typography gutterBottom>Выберите диапазон бюджета</Typography>
-            <Grid container spacing={2} sx={{ mt: 2 }}>
-                <Grid item xs={6}>
-                    <TextField
-                        label="От"
-                        value={budget[0]}
-                        onChange={handleInputChange(0)}
-                        onBlur={handleBlur(0)}
-                        fullWidth
-                        sx={{
-                            "& .MuiOutlinedInput-root": {
-                                "& fieldset": { borderColor: "white" }, // Белая граница
-                                "&:hover fieldset": { borderColor: "white" },
-                                "&.Mui-focused fieldset": { borderColor: "white" }
-                            },
-                            "& .MuiInputLabel-root": { color: "white" }, // Цвет текста метки (label)
-                            "& .MuiInputBase-input": { color: "white" }, // Цвет введенного текста
-                        }}
-
-                    />
+        <Box sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "70vh",
+            bgcolor: "#f5f5f5"
+        }}>
+            <Box sx={{ p: 3, bgcolor: "#E3F2FD", borderRadius: 2, width: 400 }}>
+                <Typography gutterBottom>Выберите диапазон бюджета</Typography>
+                <Grid container spacing={2} sx={{ mt: 2 }}>
+                    <Grid item xs={6}>
+                        <TextField
+                            label="От"
+                            value={budget[0]}
+                            onChange={handleInputChange(0)}
+                            onBlur={handleBlur(0)}
+                            fullWidth
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            label="До"
+                            value={budget[1]}
+                            onChange={handleInputChange(1)}
+                            onBlur={handleBlur(1)}
+                            fullWidth
+                        />
+                    </Grid>
                 </Grid>
-                <Grid item xs={6}>
-                    <TextField
-                        label="До"
-                        value={budget[1]}
-                        onChange={handleInputChange(1)}
-                        onBlur={handleBlur(1)}
-                        fullWidth
-                        sx={{
-                            "& .MuiOutlinedInput-root": {
-                                "& fieldset": { borderColor: "white" }, // Белая граница
-                                "&:hover fieldset": { borderColor: "white" },
-                                "&.Mui-focused fieldset": { borderColor: "white" }
-                            },
-                            "& .MuiInputLabel-root": { color: "white" }, // Цвет текста метки (label)
-                            "& .MuiInputBase-input": { color: "white" }, // Цвет введенного текста
-                        }}
-                    />
-                </Grid>
-            </Grid>
-            <Slider
-                value={budget as number[]}
-                onChange={handleSliderChange}
-                valueLabelDisplay="auto"
-                min={100000}
-                max={1000000}
-                step={50000}
-                sx={{
-                    color: "white", // Цвет ползунка
-                    "& .MuiSlider-thumb": {
-                        backgroundColor: "white", // Кружки ползунка
-                        border: "2px solid white"
-                    },
-                    "& .MuiSlider-rail": {
-                        backgroundColor: "white" // Линия под ползунком
-                    },
-                    "& .MuiSlider-track": {
-                        backgroundColor: "white" // Линия за ползунком
-                    }
-                }}
-            />
-
-
-            <Typography variant="h6">Для каких задач:</Typography>
-            <FormControl>
-                <FormControlLabel control={<Checkbox defaultChecked />} label="Офисные" />
-                <FormControlLabel control={<Checkbox />} label="Игровые" />
-                <FormControlLabel control={<Checkbox />} label="3D моделирование" />
-                <FormControlLabel control={<Checkbox />} label="Монтаж видео" />
-                <FormControlLabel control={<Checkbox />} label="Программирование" />
-            </FormControl>
-
-            <FormControl fullWidth sx={{ mt: 2 }}>
-                <Autocomplete
-                    disablePortal
-                    options={monitorResolution}
-                    sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Выберите разрешение монитора" />}
+                <Slider
+                    value={budget as number[]}
+                    onChange={handleSliderChange}
+                    valueLabelDisplay="auto"
+                    min={100000}
+                    max={1000000}
+                    step={50000}
                 />
-            </FormControl>
 
-            <Box sx={{ mt: 3, display: "flex", justifyContent: "space-between" }}>
-                <Button variant="contained" color="primary">Показать</Button>
-                <Button variant="outlined" color="error" onClick={() => { setBudget([100000, 1000000]); }}>Сбросить</Button>
+                <Typography variant="h6">Для каких задач:</Typography>
+                <FormControl>
+                    <FormControlLabel control={<Checkbox defaultChecked />} label="Офисные" />
+                    <FormControlLabel control={<Checkbox />} label="Игровые" />
+                    <FormControlLabel control={<Checkbox />} label="3D моделирование" />
+                    <FormControlLabel control={<Checkbox />} label="Монтаж видео" />
+                    <FormControlLabel control={<Checkbox />} label="Программирование" />
+                </FormControl>
+
+                <FormControl fullWidth sx={{ mt: 2 }}>
+                    <Autocomplete
+                        disablePortal
+                        options={monitorResolution}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Выберите разрешение монитора" />}
+                    />
+                </FormControl>
+
+                <Box sx={{ mt: 3, display: "flex", justifyContent: "space-between" }}>
+                    <Button variant="contained" color="primary">Показать</Button>
+                    <Button variant="outlined" color="error" onClick={() => { setBudget([100000, 1000000]); }}>Сбросить</Button>
+                </Box>
             </Box>
         </Box>
     );
 };
-
-export default FilterComponent;

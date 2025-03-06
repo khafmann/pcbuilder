@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import App from './App.tsx'
 import FilterComponent from "./components/FilterComponent";
+import ConfigComponent from "./components/ConfigComponent.tsx";
 
 const router = createBrowserRouter( [
     {
@@ -11,7 +12,12 @@ const router = createBrowserRouter( [
         children:[
             {
                 path: '/',
-                element: <FilterComponent/>
+                element: (
+                    <>
+                        <FilterComponent/>
+                        <ConfigComponent/>
+                    </>
+                )
             }
             ]
     }
