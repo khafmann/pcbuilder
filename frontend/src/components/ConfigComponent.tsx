@@ -65,8 +65,7 @@ export default function ConfigComponent() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "60vh",
-            bgcolor: "#f5f5f5"
+            height: "70vh",
         }}>
             <Box sx={{ display: "flex", flexDirection: "column", gap: "8px", width: "60%", padding: "10px" }}>
                 {components.map((item) => (
@@ -75,7 +74,6 @@ export default function ConfigComponent() {
                         sx={{
                             display: "flex",
                             alignItems: "center",
-                            backgroundColor: "#E3F2FD",
                             padding: "10px 20px",
                             borderRadius: "8px",
                             height: "50px",

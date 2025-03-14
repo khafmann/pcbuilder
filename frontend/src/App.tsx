@@ -1,21 +1,22 @@
 import {Outlet} from "react-router-dom";
 import Header from "./components/Header"
-import {GlobalStyles} from "@mui/material";
+import { GlobalStyles, ThemeProvider } from "@mui/material";
+import theme from "./theme";
 
 function App() {
     return (
-        <>
+        <ThemeProvider theme={theme}>
             <GlobalStyles
                 styles={{
                     body: {
-                        backgroundColor: "#FFFFFF", // Цвет фона
+                        backgroundColor: "#191a19", // Цвет фона
                         minHeight: "100vh"
                     },
                 }}
             />
             <Header/>
             <Outlet></Outlet>
-        </>
+        </ThemeProvider>
     )
 }
 

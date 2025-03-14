@@ -49,10 +49,9 @@ export default function FilterComponent(){
             justifyContent: "center",
             alignItems: "center",
             height: "70vh",
-            bgcolor: "#f5f5f5"
         }}>
-            <Box sx={{ p: 3, bgcolor: "#E3F2FD", borderRadius: 2, width: 400 }}>
-                <Typography gutterBottom>Выберите диапазон бюджета</Typography>
+            <Box sx={{ p: 3, borderRadius: 2, width: 500, bgcolor: "background.paper", marginTop: "70px", color:"text.primary"}}>
+                <Typography  gutterBottom>Выберите диапазон бюджета</Typography>
                 <Grid container spacing={2} sx={{ mt: 2 }}>
                     <Grid item xs={6}>
                         <TextField
@@ -79,7 +78,14 @@ export default function FilterComponent(){
                     valueLabelDisplay="auto"
                     min={100000}
                     max={1000000}
-                    step={50000}
+                    step={100000}
+                    marks={[
+                        { value: 100000, label: "100K" },
+                        { value: 300000, label: "300K" },
+                        { value: 500000, label: "500K" },
+                        { value: 700000, label: "700К" },
+                        { value: 1000000, label: "1M" },
+                    ]}
                 />
 
                 <Typography variant="h6">Для каких задач:</Typography>

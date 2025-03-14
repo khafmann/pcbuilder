@@ -19,7 +19,7 @@ export default function Header(){
         >
             <Typography
                 variant="h6"
-                sx={{ fontWeight: "bold", color: "#FFD700", textTransform: "lowercase" }}
+                sx={{ fontWeight: "bold", color: "#512DA8", textTransform: "lowercase" }}
             >
                 pcbuilder<span style={{ color: "#ffffff" }}>.kz</span>
             </Typography>
