@@ -35,7 +35,28 @@ const components = [
         name: "Cougar",
         price: "10 000 ₸",
         link: "https://google.com/"
-    }
+    },
+    {
+        id: 6,
+        category: "Материнская плата",
+        name: "ID Cooling",
+        price: "10 000 ₸",
+        link: "https://google.com/"
+    },
+    {
+        id: 7,
+        category: "Блок питания",
+        name: "ID Cooling",
+        price: "10 000 ₸",
+        link: "https://google.com/"
+    },
+    {
+        id: 8,
+        category: "Хранение данных",
+        name: "ID Cooling",
+        price: "10 000 ₸",
+        link: "https://google.com/"
+    },
 ];
 
 export default function ConfigComponent() {
@@ -44,7 +65,7 @@ export default function ConfigComponent() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "40vh",
+            height: "60vh",
             bgcolor: "#f5f5f5"
         }}>
             <Box sx={{ display: "flex", flexDirection: "column", gap: "8px", width: "60%", padding: "10px" }}>
@@ -54,23 +75,26 @@ export default function ConfigComponent() {
                         sx={{
                             display: "flex",
                             alignItems: "center",
-                            justifyContent: "space-between",
                             backgroundColor: "#E3F2FD",
                             padding: "10px 20px",
                             borderRadius: "8px",
                             height: "50px",
                         }}
                     >
-                        <Typography variant="body1" fontWeight="bold">
-                            {item.category}
-                        </Typography>
-                        <Typography variant="body1">{item.name}</Typography>
-                        <Typography variant="body1" fontWeight="bold">
-                            {item.price}
-                        </Typography>
-                        <Link href={item.link} target="_blank" rel="noopener noreferrer">
-                            Ссылка
-                        </Link>
+                        <Box sx={{ width: "20%" }}>
+                            <Typography fontWeight="bold">{item.category}</Typography>
+                        </Box>
+                        <Box sx={{ width: "50%" }}>
+                            <Typography textAlign="center">{item.name}</Typography>
+                        </Box>
+                        <Box sx={{ width: "20%", textAlign: "right" }}>
+                            <Typography fontWeight="bold">{item.price}</Typography>
+                        </Box>
+                        <Box sx={{ width: "20%", textAlign: "right" }}>
+                            <Link href={item.link} target="_blank" rel="noopener noreferrer">
+                                Ссылка
+                            </Link>
+                        </Box>
                     </Card>
                 ))}
             </Box>

@@ -100,6 +100,8 @@ export default function FilterComponent(){
                     />
                 </FormControl>
 
+                <FormControlLabel control={<Checkbox />} label="Собрать всё в одном магазине" />
+
                 <Box sx={{ mt: 3, display: "flex", justifyContent: "space-between" }}>
                     <Button variant="contained" color="primary">Показать</Button>
                     <Button variant="outlined" color="error" onClick={() => { setBudget([100000, 1000000]); }}>Сбросить</Button>
