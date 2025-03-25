@@ -27,5 +27,5 @@ export class CpuEntity {
     ramType: string;
 
     @Column()
-    tdp: number;
+    power: number;
 }

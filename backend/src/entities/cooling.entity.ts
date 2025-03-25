@@ -21,5 +21,5 @@ export class CoolingEntity {
     socket: string;
 
     @Column()
-    tdp: number;
+    power: number;
 }

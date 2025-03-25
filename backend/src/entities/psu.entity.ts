@@ -18,5 +18,5 @@ export class PsuEntity {
     store: string;
 
     @Column()
-    consumption: number;
+    power: number;
 }
