@@ -10,12 +10,13 @@ import { StorageEntity } from './entities/storage.entity';
 import { PsuEntity } from './entities/psu.entity';
 import { CoolingEntity } from './entities/cooling.entity';
 import { CaseEntity } from './entities/case.entity';
+import {TestModule} from "./modules/test.module";
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
+      imports: [ConfigModule, TestModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         type: 'postgres',
