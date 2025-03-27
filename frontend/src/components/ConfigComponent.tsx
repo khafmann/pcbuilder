@@ -1,5 +1,16 @@
 import { Card, Typography, Box, Link } from "@mui/material";
 
+const categoryNames: Record<string, string> = {
+    cpu: "Процессор",
+    motherboard: "Материнская плата",
+    ram: "ОЗУ",
+    gpu: "Видеокарта",
+    storage: "Накопитель",
+    psu: "Блок питания",
+    cooling: "Охлаждение",
+    pcCase: "Корпус"
+};
+
 export default function ConfigComponent({ components }: { components?: Record<string, any> }) {
     if (!components || typeof components !== "object") {
         console.error("Ошибка: components не является объектом", components);
@@ -7,7 +18,7 @@ export default function ConfigComponent({ components }: { components?: Record<st
     }
 
     const componentArray = Object.entries(components).map(([category, data]) => ({
-        category,
+        category: categoryNames[category] || category,
         ...data
     }));
 
@@ -36,7 +47,7 @@ export default function ConfigComponent({ components }: { components?: Record<st
                         <Box sx={{ width: "50%" }}>
                             <Typography textAlign="center">{item.name}</Typography>
                         </Box>
-                        <Box sx={{ width: "20%", textAlign: "right" }}>
+                        <Box sx={{ width: "20%", textAlign: "center" }}>
                             <Typography fontWeight="bold">{item.price}</Typography>
                         </Box>
                         <Box sx={{ width: "20%", textAlign: "right" }}>

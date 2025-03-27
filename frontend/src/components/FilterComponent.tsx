@@ -15,7 +15,7 @@ import { monitorResolution } from '../data/monitorResolution.ts'
 
 export default function FilterComponent({ onFilter }: { onFilter: (budget: number, type: string) => void }) {
     const [budget, setBudget] = useState<number[]>([100000, 1000000]);
-    const [type, setType] = useState("gaming");
+    const [type] = useState("gaming");
 
     const handleShow = () => {
         onFilter(budget[1], type);
@@ -95,8 +95,8 @@ export default function FilterComponent({ onFilter }: { onFilter: (budget: numbe
 
                 <Typography variant="h6">Для каких задач:</Typography>
                 <FormControl>
-                    <FormControlLabel control={<Checkbox defaultChecked />} label="Офисные" />
-                    <FormControlLabel control={<Checkbox />} label="Игровые" />
+                    <FormControlLabel control={<Checkbox defaultChecked />} label="Игровые" />
+                    <FormControlLabel control={<Checkbox />} label="Офисные" />
                     <FormControlLabel control={<Checkbox />} label="3D моделирование" />
                 </FormControl>
 
@@ -112,7 +112,7 @@ export default function FilterComponent({ onFilter }: { onFilter: (budget: numbe
                 <FormControlLabel control={<Checkbox />} label="Собрать всё в одном магазине" />
 
                 <Box sx={{ mt: 3, display: "flex", justifyContent: "space-between" }}>
-                    <Button variant="contained" color="primary" onClick={handleShow}>Показать</Button>
+                    <Button variant="contained" color="primary" onClick={handleShow}>Собрать ПК</Button>
                     <Button variant="outlined" color="error" onClick={() => { setBudget([100000, 1000000]); }}>Сбросить</Button>
                 </Box>
             </Box>

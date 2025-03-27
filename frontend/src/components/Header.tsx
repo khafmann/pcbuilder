@@ -8,19 +8,17 @@ export default function Header(){
                 position: "fixed",
                 top: 0,
                 left: 0,
-                width: "100vw",
+                width: "98%",
                 backgroundColor: "#121826",
                 padding: "10px 20px",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                zIndex: 1000,
             }}
         >
             <Typography
                 variant="h6"
-                sx={{ fontWeight: "bold", color: "#512DA8", textTransform: "lowercase" }}
-            >
+                sx={{ fontWeight: "bold", color: "#512DA8" }}>
                 pcbuilder<span style={{ color: "#ffffff" }}>.kz</span>
             </Typography>
 
