@@ -13,8 +13,13 @@ import {
 } from "@mui/material";
 import { monitorResolution } from '../data/monitorResolution.ts'
 
-export default function FilterComponent(){
+export default function FilterComponent({ onFilter }: { onFilter: (budget: number, type: string) => void }) {
     const [budget, setBudget] = useState<number[]>([100000, 1000000]);
+    const [type, setType] = useState("gaming");
+
+    const handleShow = () => {
+        onFilter(budget[1], type);
+    };
 
     const handleSliderChange = (_: Event, newValue: number | number[]) => {
         setBudget(newValue as number[]);
@@ -93,8 +98,6 @@ export default function FilterComponent(){
                     <FormControlLabel control={<Checkbox defaultChecked />} label="Офисные" />
                     <FormControlLabel control={<Checkbox />} label="Игровые" />
                     <FormControlLabel control={<Checkbox />} label="3D моделирование" />
-                    <FormControlLabel control={<Checkbox />} label="Монтаж видео" />
-                    <FormControlLabel control={<Checkbox />} label="Программирование" />
                 </FormControl>
 
                 <FormControl fullWidth sx={{ mt: 2 }}>
@@ -109,7 +112,7 @@ export default function FilterComponent(){
                 <FormControlLabel control={<Checkbox />} label="Собрать всё в одном магазине" />
 
                 <Box sx={{ mt: 3, display: "flex", justifyContent: "space-between" }}>
-                    <Button variant="contained" color="primary">Показать</Button>
+                    <Button variant="contained" color="primary" onClick={handleShow}>Показать</Button>
                     <Button variant="outlined" color="error" onClick={() => { setBudget([100000, 1000000]); }}>Сбросить</Button>
                 </Box>
             </Box>

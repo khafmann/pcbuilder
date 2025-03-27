@@ -16,7 +16,7 @@ const theme = createTheme({
         },
         background: {
             default: "#536DFE",
-            paper: "#D1C4E9"
+            paper: "#D1C4E9" // Цвет фона карточек
         },
         text: {
             primary: "#512DA8"

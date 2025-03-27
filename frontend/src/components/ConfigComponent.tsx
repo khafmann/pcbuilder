@@ -1,65 +1,16 @@
 import { Card, Typography, Box, Link } from "@mui/material";
 
-const components = [
-    {
-        id: 1,
-        category: "Процессор",
-        name: "AMD Ryzen 5 7600, AM5, OEM",
-        price: "99 990 ₸",
-        link: "https://shop.kz/offer/protsessor-amd-ryzen-5-7600-am5-oem/"
-    },
-    {
-        id: 2,
-        category: "Видеокарта",
-        name: "MSI GeForce RTX 4070 VENTUS 3X E1 OC",
-        price: "362 990 ₸",
-        link: "https://www.dns-shop.kz/product/5a7c53476434d582/videokarta-msi-geforce-rtx-4070-ventus-3x-e1-oc-geforce-rtx-4070-ventus-3x-e1-12g-oc/"
-    },
-    {
-        id: 3,
-        category: "Оперативная память",
-        name: "RAM",
-        price: "10 000 ₸",
-        link: "https://google.com/"
-    },
-    {
-        id: 4,
-        category: "Охлаждение",
-        name: "ID Cooling",
-        price: "10 000 ₸",
-        link: "https://google.com/"
-    },
-    {
-        id: 5,
-        category: "Корпус",
-        name: "Cougar",
-        price: "10 000 ₸",
-        link: "https://google.com/"
-    },
-    {
-        id: 6,
-        category: "Материнская плата",
-        name: "ID Cooling",
-        price: "10 000 ₸",
-        link: "https://google.com/"
-    },
-    {
-        id: 7,
-        category: "Блок питания",
-        name: "ID Cooling",
-        price: "10 000 ₸",
-        link: "https://google.com/"
-    },
-    {
-        id: 8,
-        category: "Хранение данных",
-        name: "ID Cooling",
-        price: "10 000 ₸",
-        link: "https://google.com/"
-    },
-];
+export default function ConfigComponent({ components }: { components?: Record<string, any> }) {
+    if (!components || typeof components !== "object") {
+        console.error("Ошибка: components не является объектом", components);
+        return <Typography variant="h6" sx={{ textAlign: "center", color: "red" }}>Ошибка загрузки данных</Typography>;
+    }
 
-export default function ConfigComponent() {
+    const componentArray = Object.entries(components).map(([category, data]) => ({
+        category,
+        ...data
+    }));
+
     return (
         <Box sx={{
             display: "flex",
@@ -67,10 +18,10 @@ export default function ConfigComponent() {
             alignItems: "center",
             height: "70vh",
         }}>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: "8px", width: "60%", padding: "10px" }}>
-                {components.map((item) => (
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2, width: "60%", padding: 2 }}>
+                {componentArray.map((item) => (
                     <Card
-                        key={item.id}
+                        key={item?.id || item.category}
                         sx={{
                             display: "flex",
                             alignItems: "center",
@@ -98,4 +49,4 @@ export default function ConfigComponent() {
             </Box>
         </Box>
     );
-};
+}
