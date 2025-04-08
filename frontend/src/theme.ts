@@ -3,70 +3,112 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
     palette: {
         primary: {
-            dark: '#0A1A3A',      // Тёмно-синий (для ховера/акцентов)
-            main: '#1A56DB',      // Ярко-синий (основные кнопки)
-            light: '#E1EFFE',     // Светло-голубой (фоны)
+            main: '#2563EB',     // Более насыщенный синий
+            dark: '#1E40AF',     // Глубокий синий
+            light: '#93C5FD',    // Мягкий голубой
             contrastText: '#FFFFFF'
         },
         secondary: {
-            dark: '#065F46',     // Тёмно-зелёный
-            main: '#10B981',      // Изумрудный (доп. кнопки)
-            light: '#D1FAE5',    // Мятный
+            main: '#EC4899',     // Ярко-розовый (вместо зелёного)
+            dark: '#BE185D',
+            light: '#FBCFE8',
             contrastText: '#FFFFFF'
         },
         background: {
-            default: "#F9FAFB",   // Светло-серый (основной фон)
-            paper: "#FFFFFF"      // Белый (карточки)
+            default: '#F8FAFC',  // Очень светлый серо-голубой
+            paper: '#FFFFFF'
         },
         text: {
-            primary: "#111827",  // Почти чёрный
-            secondary: "#6B7280"  // Серый (второстепенный текст)
+            primary: '#1E293B',   // Тёмно-синий вместо чёрного
+            secondary: '#64748B'
         },
         error: {
-            main: "#EF4444"      // Красный для ошибок
+            main: '#EF4444'
         },
         success: {
-            main: "#10B981"       // Зелёный для успеха
+            main: '#10B981'
         }
     },
     typography: {
-        fontFamily: "'Inter', 'Roboto', Arial, sans-serif",
+        fontFamily: '"system-ui", sans-serif',
         h1: {
-            fontSize: "2.5rem",
-            fontWeight: 800,
-            color: "#111827"
+            fontSize: "2.8rem",
+            fontWeight: 700,
+            letterSpacing: "-0.5px",
+            color: '#1E293B'
         },
         h2: {
-            fontWeight: 700,
-            color: "#1E40AF"
+            fontSize: "2rem",
+            fontWeight: 600,
+            color: '#2563EB',
+            letterSpacing: "-0.3px"
         },
         button: {
             fontWeight: 600,
-            textTransform: 'none'  // Убирает CAPS в кнопках
+            letterSpacing: "0.5px"
         },
         body1: {
             fontSize: "1rem",
-            lineHeight: 1.6,
-            color: "#374151"
+            lineHeight: 1.7,
+            color: '#334155'
         }
     },
     components: {
         MuiButton: {
             styleOverrides: {
                 root: {
-                    borderRadius: '8px',
-                    padding: '10px 20px'
+                    borderRadius: '12px',
+                    padding: '12px 24px',
+                    transition: 'all 0.2s',
+                    '&:hover': {
+                        transform: 'translateY(-2px)'
+                    }
+                },
+                contained: {
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                    '&:hover': {
+                        boxShadow: '0 6px 8px rgba(0, 0, 0, 0.15)'
+                    }
+                },
+                outlinedPrimary: {
+                    borderWidth: '2px'
                 }
             }
         },
         MuiCard: {
             styleOverrides: {
                 root: {
-                    borderRadius: '12px',
-                    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+                    borderRadius: '16px',
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
+                    border: '1px solid rgba(0, 0, 0, 0.05)',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                        transform: 'translateY(-4px)',
+                        boxShadow: '0 10px 15px rgba(0, 0, 0, 0.1)',
+                        borderColor: '#93C5FD'
+                    }
+                }
+            }
+        },
+        MuiAppBar: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#FFFFFF',
+                    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.08)',
+                    borderBottom: '1px solid #E2E8F0'
+                }
+            }
+        },
+        MuiDivider: {
+            styleOverrides: {
+                root: {
+                    borderColor: '#E2E8F0'
                 }
             }
         }
+    },
+    shape: {
+        borderRadius: 12
     }
 });
 

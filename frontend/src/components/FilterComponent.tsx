@@ -57,7 +57,9 @@ export default function FilterComponent({ onFilter }: { onFilter: (budget: numbe
             alignItems: "center",
             height: "70vh",
         }}>
-            <Box sx={{ p: 3, borderRadius: 2, width: 500, bgcolor: "background.paper", marginTop: "70px", color:"text.primary"}}>
+            <Box sx={{ p: 4, borderRadius: 2, width: 500,
+                bgcolor: "background.paper", marginTop: "70px", color:"text.primary",
+                boxShadow: 1}}>
                 <Typography  gutterBottom>Выберите диапазон бюджета</Typography>
                 <Grid container spacing={2} sx={{ mt: 2 }}>
                     <Grid item xs={6}>
@@ -66,7 +68,6 @@ export default function FilterComponent({ onFilter }: { onFilter: (budget: numbe
                             value={budget[0]}
                             onChange={handleInputChange(0)}
                             onBlur={handleBlur(0)}
-                            fullWidth
                         />
                     </Grid>
                     <Grid item xs={6}>
@@ -75,7 +76,6 @@ export default function FilterComponent({ onFilter }: { onFilter: (budget: numbe
                             value={budget[1]}
                             onChange={handleInputChange(1)}
                             onBlur={handleBlur(1)}
-                            fullWidth
                         />
                     </Grid>
                 </Grid>

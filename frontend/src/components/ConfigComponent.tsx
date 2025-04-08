@@ -27,7 +27,7 @@ export default function ConfigComponent({ components, open }) {
         <Fade in={open} timeout={800}>
             <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70vh" }}>
 
-                    <Box sx={{ display: "flex", flexDirection: "column", gap: 2, width: "60%", padding: 2 }}>
+                    <Box sx={{ display: "flex", flexDirection: "column", gap: 2, width: "60%", padding: 2, boxShadow: 1 }}>
                         {componentArray.map((item) => (
                             <Collapse in={open} timeout={500}>
                                 <Card
@@ -37,7 +37,7 @@ export default function ConfigComponent({ components, open }) {
                                         alignItems: "center",
                                         padding: "10px 20px",
                                         borderRadius: "8px",
-                                        height: "50px",
+                                        height: "50px"
                                     }}>
                                     <Box sx={{ width: "20%" }}>
                                         <Typography fontWeight="bold">{item.category}</Typography>
