@@ -9,7 +9,9 @@ import {
     FormControlLabel,
     Autocomplete,
     TextField,
-    Grid
+    Grid,
+    RadioGroup,
+    Radio
 } from "@mui/material";
 import { monitorResolution } from '../data/monitorResolution.ts'
 
@@ -94,10 +96,24 @@ export default function FilterComponent({ onFilter }: { onFilter: (budget: numbe
                 />
 
                 <Typography variant="h6">Для каких задач:</Typography>
-                <FormControl>
-                    <FormControlLabel control={<Checkbox defaultChecked />} label="Игровые" />
-                    <FormControlLabel control={<Checkbox />} label="Офисные" />
-                    <FormControlLabel control={<Checkbox />} label="3D моделирование" />
+                <FormControl component="fieldset">
+                    <RadioGroup defaultValue="gaming" name="pc-type">
+                        <FormControlLabel
+                            value="gaming"
+                            control={<Radio />}
+                            label="Игровые"
+                        />
+                        <FormControlLabel
+                            value="office"
+                            control={<Radio />}
+                            label="Офисные"
+                        />
+                        <FormControlLabel
+                            value="workstation"
+                            control={<Radio />}
+                            label="3D моделирование"
+                        />
+                    </RadioGroup>
                 </FormControl>
 
                 <FormControl fullWidth sx={{ mt: 2 }}>

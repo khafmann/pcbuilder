@@ -1,7 +1,8 @@
 import { Box, Typography, useTheme } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function Header() {
-    const theme = useTheme(); // Получаем доступ к теме
+    const theme = useTheme();
 
     return (
         <Box
@@ -34,11 +35,14 @@ export default function Header() {
 
             <Box sx={{ display: "flex", gap: "20px" }}>
                 <Typography
+                    component={Link}
+                    to="/faq"
                     variant="body1"
                     sx={{
                         color: theme.palette.common.white,
                         fontWeight: "bold",
                         cursor: "pointer",
+                        textDecoration: "none",
                         '&:hover': {
                             color: theme.palette.secondary.light
                         }
