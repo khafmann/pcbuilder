@@ -27,10 +27,20 @@ export default function FilterComponent({ onFilter }: { onFilter: (budget: numbe
         setBudget(newValue as number[]);
     };
 
+    const formatNumber = (value: number) => {
+        return new Intl.NumberFormat("ru-RU").format(value);
+    };
+
+    const parseNumber = (value: string) => {
+        return Number(value.replace(/\s/g, ""));
+    };
+
     const handleInputChange = (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value === "" ? "" : Number(event.target.value);
+        const rawValue = event.target.value;
+        const parsedValue = parseNumber(rawValue);
+
         const newBudget = [...budget];
-        newBudget[index] = value as number;
+        newBudget[index] = isNaN(parsedValue) ? 0 : parsedValue;
         setBudget(newBudget);
     };
 
@@ -65,17 +75,19 @@ export default function FilterComponent({ onFilter }: { onFilter: (budget: numbe
                     <Grid item xs={6}>
                         <TextField
                             label="От"
-                            value={budget[0]}
+                            value={formatNumber(budget[0])}
                             onChange={handleInputChange(0)}
                             onBlur={handleBlur(0)}
+                            fullWidth
                         />
                     </Grid>
                     <Grid item xs={6}>
                         <TextField
                             label="До"
-                            value={budget[1]}
+                            value={formatNumber(budget[1])}
                             onChange={handleInputChange(1)}
                             onBlur={handleBlur(1)}
+                            fullWidth
                         />
                     </Grid>
                 </Grid>

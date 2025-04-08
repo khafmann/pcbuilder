@@ -23,6 +23,8 @@ export default function Header() {
         >
             <Typography
                 variant="h6"
+                component={Link}
+                to="/"
                 sx={{
                     fontWeight: "bold",
                     color: theme.palette.primary.light,
