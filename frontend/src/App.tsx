@@ -6,7 +6,7 @@ import theme from "./theme";
 function App() {
     return (
         <ThemeProvider theme={theme}>
-            <GlobalStyles styles={{ body: { backgroundColor: "#191a19", minHeight: "100vh" } }} />
+            <GlobalStyles styles={{ body: { backgroundColor: theme.palette.background.default, minHeight: "100vh" } }} />
             <Header />
             <Outlet />
         </ThemeProvider>
