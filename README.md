@@ -14,5 +14,7 @@ This is my final project for Fullstack development course. It's simple PC config
 ## You can reach me via email:
 ```
 khafmann@gmail.com
+```
+```
 khafmann@inbox.ru
 ```
