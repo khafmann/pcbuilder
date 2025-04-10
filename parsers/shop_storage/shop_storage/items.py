@@ -6,7 +6,11 @@
 import scrapy
 
 
-class ShopStorageItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
+class ParserItem(scrapy.Item):
+    id=scrapy.Field()
+    name=scrapy.Field()
+    price=scrapy.Field()
+    url=scrapy.Field()
+    store=scrapy.Field()
+    capacity=scrapy.Field()
     pass
