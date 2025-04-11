@@ -27,13 +27,13 @@ export class BuildService {
         let budgetDistribution = this.getBudgetDistribution(budget, type);
 
         const cpu = await this.cpuRepo.findOne({
-            where: { price: Between(Math.round(budgetDistribution.cpu * 0), Math.round(budgetDistribution.cpu * 1.1)) },
+            where: { price: Between(Math.round(budgetDistribution.cpu * 0.5), Math.round(budgetDistribution.cpu * 1.1)) },
             order: { price: 'DESC' }
         });
 
         const motherboard = cpu ? await this.motherboardRepo.findOne({
             where: {
-                price: Between(Math.round(budgetDistribution.motherboard * 0), Math.round(budgetDistribution.motherboard * 1.1)),
+                price: Between(Math.round(budgetDistribution.motherboard * 0.5), Math.round(budgetDistribution.motherboard * 1.1)),
                 socket: cpu.socket,
                 ramType: cpu.ramType
             },
@@ -42,25 +42,25 @@ export class BuildService {
 
         const ram = cpu ? await this.ramRepo.findOne({
             where: {
-                price: Between(Math.round(budgetDistribution.ram * 0), Math.round(budgetDistribution.ram * 1.1)),
+                price: Between(Math.round(budgetDistribution.ram * 0.5), Math.round(budgetDistribution.ram * 1.1)),
                 ramType: cpu.ramType
             },
             order: { price: 'DESC' }
         }) : null;
 
         const gpu = await this.gpuRepo.findOne({
-            where: { price: Between(Math.round(budgetDistribution.gpu * 0), Math.round(budgetDistribution.gpu * 1.1)) },
+            where: { price: Between(Math.round(budgetDistribution.gpu * 0.5), Math.round(budgetDistribution.gpu * 1.1)) },
             order: { price: 'DESC' }
         });
 
         const storage = await this.storageRepo.findOne({
-            where: { price: Between(Math.round(budgetDistribution.storage * 0), Math.round(budgetDistribution.storage * 1.1)) },
+            where: { price: Between(Math.round(budgetDistribution.storage * 0.5), Math.round(budgetDistribution.storage * 1.1)) },
             order: { price: 'DESC' }
         });
 
         const psus = await this.psuRepo.find({
             where: {
-                price: Between(Math.round(budgetDistribution.psu * 0), Math.round(budgetDistribution.psu * 1.1)),
+                price: Between(Math.round(budgetDistribution.psu * 0.5), Math.round(budgetDistribution.psu * 1.1)),
             },
             order: { price: 'DESC' }
         });
@@ -70,7 +70,7 @@ export class BuildService {
 
         const coolings = await this.coolingRepo.find({
             where: {
-                price: Between(Math.round(budgetDistribution.cooling * 0), Math.round(budgetDistribution.cooling * 1.1)),
+                price: Between(Math.round(budgetDistribution.cooling * 0.5), Math.round(budgetDistribution.cooling * 1.1)),
             },
             order: { price: 'DESC' }
         });
@@ -79,7 +79,7 @@ export class BuildService {
         const cooling = coolings.find(c => c.power >= (cpu?.power ?? 0)) ?? null;
 
         const pcCase = await this.caseRepo.findOne({
-            where: { price: Between(Math.round(budgetDistribution.case * 0), Math.round(budgetDistribution.case * 1.1)) },
+            where: { price: Between(Math.round(budgetDistribution.case * 0.5), Math.round(budgetDistribution.case * 1.1)) },
             order: { price: 'DESC' }
         });
 

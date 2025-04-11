@@ -17,7 +17,11 @@ import { monitorResolution } from '../data/monitorResolution.ts'
 
 export default function FilterComponent({ onFilter }: { onFilter: (budget: number, type: string) => void }) {
     const [budget, setBudget] = useState<number[]>([100000, 1000000]);
-    const [type] = useState("gaming");
+    const [type, setType] = useState("gaming");
+
+    const handleTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setType(event.target.value);
+    };
 
     const handleShow = () => {
         onFilter(budget[1], type);
@@ -109,7 +113,7 @@ export default function FilterComponent({ onFilter }: { onFilter: (budget: numbe
 
                 <Typography variant="h6">Для каких задач:</Typography>
                 <FormControl component="fieldset">
-                    <RadioGroup defaultValue="gaming" name="pc-type">
+                    <RadioGroup defaultValue="gaming" name="pc-type" onChange={handleTypeChange}>
                         <FormControlLabel
                             value="gaming"
                             control={<Radio />}
