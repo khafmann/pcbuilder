@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, Between } from 'typeorm';
+import {Repository, Between, FindOptionsWhere} from 'typeorm';
 import { GpuEntity } from '../entities/gpu.entity';
 import { CpuEntity } from '../entities/cpu.entity';
 import { MotherboardEntity } from '../entities/motherboard.entity';
@@ -43,8 +43,9 @@ export class BuildService {
         const ram = cpu ? await this.ramRepo.findOne({
             where: {
                 price: Between(Math.round(budgetDistribution.ram * 0.5), Math.round(budgetDistribution.ram * 1.1)),
-                ramType: cpu.ramType
-            },
+                ramType: cpu.ramType,
+                ...(type === 'workstation' ? { capacity: 32 } : {})
+            } as FindOptionsWhere<RamEntity>,
             order: { price: 'DESC' }
         }) : null;
 

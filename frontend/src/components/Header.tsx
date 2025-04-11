@@ -52,11 +52,14 @@ export default function Header() {
                     FAQ
                 </Typography>
                 <Typography
+                    component={Link}
+                    to="/contacts"
                     variant="body1"
                     sx={{
                         color: theme.palette.common.white,
                         fontWeight: "bold",
                         cursor: "pointer",
+                        textDecoration: "none",
                         '&:hover': {
                             color: theme.palette.secondary.light
                         }

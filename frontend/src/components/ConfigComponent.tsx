@@ -42,13 +42,19 @@ export default function ConfigComponent({ components, open }) {
                                     <Box sx={{ width: "20%" }}>
                                         <Typography fontWeight="bold">{item.category}</Typography>
                                     </Box>
-                                    <Box sx={{ width: "50%" }}>
-                                        <Typography textAlign="center">{item.name}</Typography>
+                                    <Box sx={{ width: "60%" }}>
+                                        {item.name ? (
+                                            <Typography textAlign="center">{item.name}</Typography>
+                                        ) : (
+                                            <Typography textAlign="center" color="text.secondary">
+                                                Подходящий товар не найден в базе данных. База будет расширена позже
+                                            </Typography>
+                                        )}
                                     </Box>
-                                    <Box sx={{ width: "20%", textAlign: "center" }}>
-                                        <Typography fontWeight="bold">{item.price}</Typography>
+                                    <Box sx={{ width: "15%", textAlign: "center" }}>
+                                        <Typography fontWeight="bold">{new Intl.NumberFormat("ru-RU").format(item.price)} ₸</Typography>
                                     </Box>
-                                    <Box sx={{ width: "20%", textAlign: "right" }}>
+                                    <Box sx={{ width: "15%", textAlign: "right" }}>
                                         <Link href={item.link} target="_blank" rel="noopener noreferrer">
                                             Ссылка
                                         </Link>
